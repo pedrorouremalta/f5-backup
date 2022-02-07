@@ -4,7 +4,7 @@
 Another Bash script to backup a BIG-IP device.
 ## How it Works
 
-The backup script is executed from the BIG-IP device and the UCS file created is copied to a remote SCP server. All the backup steps are logged to the local syslog.
+The backup script is executed from the BIG-IP device and the UCS file created is copied to a remote SCP server. After the file has been copied, it is deleted locally. All the backup steps are logged to the local syslog.
 
 ## How to Use
 
