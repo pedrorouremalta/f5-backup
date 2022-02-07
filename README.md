@@ -12,19 +12,19 @@ The backup script is executed from the BIG-IP device and the UCS file created is
     ```
     mkdir /shared/scripts/f5-backup/
     ```
-2. Copy the script "f5-backup.sh" to the BIG-IP and put it on the directory previously created ; 
+2. Copy the script *f5-backup.sh* to the BIG-IP and put it on the directory previously created ; 
 
 3. Give execute permission to the script:
     ```
     chmod +x f5-backup.sh
     ```
-3. Generate an SSH key pair which will be used by the script to copy the UCS file to the remote SCP server:
+3. Generate a SSH key pair which will be used by the script to copy the UCS file to the remote SCP server:
     ```
     cd /shared/scripts/f5-backup/
     mkdir mykeys
     ssh-keygen -f mykeys/f5user
     ```
-4. Copy the public key (f5user.pub, in this case) to the SCP server and put it in the file ".ssh/authorized_keys" inside the user's home directory ;
+4. Copy the public key (*f5user.pub*, in this case) to the SCP server and put it in the file ".ssh/authorized_keys" inside the user's home directory ;
 
 5. Adjust the following settings inside the script file accordingly with your environment:
     ```
@@ -33,14 +33,15 @@ The backup script is executed from the BIG-IP device and the UCS file created is
     SCPKEY="/shared/scripts/f5-backup/mykeys/f5user"
     SCPREMOTEDIR="/home/f5user/"
     ```
-6. To encrypt the UCS file configure the PASSPHRASE variable inside the script (if left blank the UCS will be not encrypted);
+6. To encrypt the UCS file configure the *PASSPHRASE* variable inside the script (if left blank the UCS will be not encrypted);
 
-7. Test the script (using DEBUG=1, inside the script) ;
+7. Test the script (using *DEBUG=1*, inside the script) ;
     ```
     ./f5-backup.sh
     ```
     
     **Note:** If trying to create an encrypted UCS file, use the root user to execute the script (https://cdn.f5.com/product/bugtracker/ID791365.html)
+
 8. Create an iCall script which will execute the "f5-backup.sh" script:
     ```
     tmsh create sys icall script backup
