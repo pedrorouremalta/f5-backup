@@ -40,16 +40,16 @@ The backup script is executed from the BIG-IP device and the UCS file created is
     ./f5-backup.sh
     ```
     
-    **Note:** If trying to create an encrypted UCS file, use the root user to execute the script (https://cdn.f5.com/product/bugtracker/ID791365.html)
+    **Note:** If trying to create an encrypted UCS file, use the root user to execute the script (https://cdn.f5.com/product/bugtracker/ID791365.html).
 
-8. Create an iCall script which will execute the "f5-backup.sh" script:
+8. Create an *iCall* script which will execute the *f5-backup.sh* script:
     ```
     tmsh create sys icall script backup
     tmsh modify sys icall script backup definition { exec /shared/scripts/f5-backup/f5-backup.sh }
     ```
-9. Create an iCall periodic handler which will execute the iCall script created previously (adjust the "interval" setting accordingly to your needs):
+9. Create an *iCall* periodic handler which will execute the iCall script created previously (adjust the "interval" setting accordingly to your needs):
     ```
-    tmsh create sys icall handler periodic backup first-occurrence 2022-02-02:00:00:00 interval 900 script backup
+    tmsh create sys icall handler periodic backup first-occurrence 2022-02-02:00:00:00 interval 86400 script backup
     ```
 10. Save the configuration: 
     ```
