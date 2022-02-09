@@ -10,21 +10,21 @@ The backup script is executed from the BIG-IP device and the UCS file created is
 
 1. Create a directory on BIG-IP to host the backup script and the ssh key pair:
     ```
-    mkdir /shared/scripts/f5-backup/
+    mkdir -p /shared/scripts/f5-backup/
     ```
 2. Copy the script *f5-backup.sh* to the BIG-IP and put it on the directory previously created ; 
 
 3. Give execute permission to the script:
     ```
+    cd /shared/scripts/f5-backup/
     chmod +x f5-backup.sh
     ```
 3. Generate a SSH key pair which will be used by the script to copy the UCS file to the remote SCP server:
     ```
-    cd /shared/scripts/f5-backup/
     mkdir mykeys
     ssh-keygen -f mykeys/f5user
     ```
-4. Copy the public key (*f5user.pub*, in this case) to the SCP server and put it in the file ".ssh/authorized_keys" inside the user's home directory ;
+4. Copy the public key (*f5user.pub*, in this case) to the SCP server and put it in the file *.ssh/authorized_keys* inside the user's home directory ;
 
 5. Adjust the following settings inside the script file accordingly with your environment:
     ```
